@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa
+    ports:
+      - "8080:80"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=dvwa
+      - MYSQL_PASSWORD=dvwa
+      - MYSQL_DATABASE=dvwa
+    networks:
+      - dvwa-net
+
+  db:
+    image: mysql:5.7
+    container_name: dvwa-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dvwa
+    volumes:
+      - dvwa-db-data:/var/lib/mysql
+    networks:
+      - dvwa-net
+
+networks:
+  dvwa-net:
+    driver: bridge
+
+volumes:
+  dvwa-db-data:
