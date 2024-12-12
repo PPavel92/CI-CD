@@ -5,7 +5,7 @@ services:
     image: vulnerables/web-dvwa
     container_name: dvwa
     ports:
-      - "8080:80"
+      - "4280:80"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=dvwa
