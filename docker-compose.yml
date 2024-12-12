@@ -13,6 +13,8 @@ services:
       - MYSQL_DATABASE=dvwa
     networks:
       - dvwa-net
+    depends_on:
+      - db
 
   db:
     image: mysql:5.7
